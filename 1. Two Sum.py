@@ -4,20 +4,31 @@
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
         """
-        Given a list of integers `nums` and an integer `target`, 
+        Given a list of integers `nums` and an integer `target`,
         return the indices of the two numbers such that they add up to `target`.
-        
+
+        This implementation uses a single-pass hashmap (dictionary) to achieve
+        O(n) time complexity and O(n) extra space. As we iterate through the
+        list we store each number's index in the hashmap; for each number we
+        check whether its complement (target - num) has already been seen.
+
         Args:
-        nums (list[int]): A list of integers.
-        target (int): The target sum to find.
-        
+            nums (list[int]): A list of integers.
+            target (int): The target sum to find.
+
         Returns:
-        list[int]: A list containing the indices of the two numbers that add up to `target`.
+            list[int]: A list containing the indices of the two numbers that add up to `target`.
+
+        Raises:
+            ValueError: If no two numbers sum up to the target.
         """
-        # Iterate through each element in the list `nums`
-        for first_idx, first_elem in enumerate(nums):
-            # Iterate through the remaining elements after the current element
-            for second_idx, second_elem in enumerate(nums[first_idx + 1:], start=first_idx + 1):
-                # If the sum of the two elements equals the target, return their indices
-                if first_elem + second_elem == target:
-                    return [first_idx, second_idx]
+        seen: dict[int, int] = {}
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in seen:
+                return [seen[complement], i]
+            seen[num] = i
+
+        # If the problem guarantees a solution (as LeetCode does), this line
+        # should never run; otherwise raise to make failure explicit.
+        raise ValueError("No two sum solution")
