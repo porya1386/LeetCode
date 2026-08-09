@@ -11,3 +11,9 @@ class Solution(object):
             if val in _nums:
                 return [i,_nums[val]]
             _nums[nums[i]]=i
+# _nums baraye zakhire kardan adad ha va index haye anha estefade mishavad.
+# lenght baraye daryafte tool list estefade mishavad.
+# for loop baraye daryafte index haye list estefade mishavad.
+# val baraye mohasebe adad marboot be target estefade mishavad.
+# if val dar _nums bashad, yani adad marboot be target dar list vojood darad va index haye anha barmigardanad.
+# _nums[nums[i]]=i baraye zakhire kardan adad va index haye anha dar _nums estefade mishavad.
