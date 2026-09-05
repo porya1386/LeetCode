@@ -41,7 +41,8 @@ class Solution:
                 second.append(first[idx])  # Add the value directly
                 idx += 1
             else:
-                third.append([first[idx], first[idx + 1]])  # Store the subtractive pair
+                # Store the subtractive pair
+                third.append([first[idx], first[idx + 1]])
                 idx += 2  # Skip the next value as it's already processed
 
         # Step 3: Calculate the final result
