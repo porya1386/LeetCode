@@ -2,6 +2,15 @@
 nums = [2, 7, 11, 15]
 target = 18
 
+# With nested loop Time Complexity: O(n²)
+# its much easter to underestand the algorithm but in leet cod real question is always about time Complexity 
+class Solution:
+    def twoSum(self, numbers: list[int], target: int) -> list[int]:
+        for i in range(len(numbers)):
+            for j in range(i + 1, len(numbers)):
+                if numbers[i] + numbers[j] == target:
+                    return ([i + 1, j + 1])
+
 left = 0  # Starting from index 0
 # Starting from last index in our list so -1 is 15 in this case
 right = len(nums) - 1
@@ -29,6 +38,8 @@ class Solution:
             if total == target:
                 return [left + 1, right + 1]
             elif total < target:
+
+                
                 left += 1
             else:
                 right -= 1
